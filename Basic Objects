@@ -1,0 +1,60 @@
+"""
+Instituto Tecnológico de Costa Rica (ITCR)
+Escuela de Ingeniería en Computadores
+
+II Semestre 2017 - Taller de Programación
+Prof. Jeff Schmidt Peralta
+III Proyecto - Scamperghost
+Módulo: basic objects
+
+Víctor Ignacio Castrillo Muñoz
+Carnet: 2017110244
+
+
+Lenguaje de Programación: Python 3.4.2
+"""
+
+### Flags ###
+
+### Basic Values ###
+
+hex_digs = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"]
+pycolors = [(0, 0, 0), (255, 255, 255)]
+tkcolors = ["#000000", "#FFFFFF"]
+
+### Field ###
+
+class Position:
+    def __init__(self, vec_x, vec_y, chrct, item):
+        self.vec_x = vec_x
+        self.vec_y = vec_y
+        self.chrct = chrct
+        self.item = item
+
+class Field:
+    def __init__(self):
+        self.chart = []
+        i = 0
+        while len(self.chart) != 30:
+            line = []
+            j = 0
+            while len(line) != 32:
+                line.append(Position(i, j, None))
+                j += 1
+            self.chart.append(line)
+            i += 1
+    def __put_obj__(self, chrct):
+        self.chart[chrct.pos_y][chrct.pos_x].obj = chrct
+
+### Characters ###
+
+class PacMan:
+    def __init__(self, state, pos_x, pos_y, speed):
+        self.state = state
+        self.pos_x = pos_x
+        self.pos_y = pos_y
+        self.speed = speed
+
+class Item:
+    def __init__(self, kind):
+        self.kind == kind
